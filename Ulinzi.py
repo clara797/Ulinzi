@@ -30,7 +30,7 @@ Headers=[
     "temporary_fix"
 ]
 
-if not os.path.exixts(DATA_FILE):
+if not os.path.exists(DATA_FILE):
     with open (DATA_FILE, mode="w" ,newline="") as file:
      writer = csv.writer(file)
      writer.writerow(Headers)
@@ -133,6 +133,7 @@ st.success(f"Incident {incident_id} recorded successfully.")
     
 
    
+
 
 
 
