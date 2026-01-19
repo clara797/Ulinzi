@@ -6,7 +6,7 @@ from datetime import datetime
 
 st.set_page_config(page_title ="Ulinzibora" ,layout ="centered")
 st.title("Ulinzi")
-st.subheader("Vandalism incident and engineering audit tool")
+st.subheader("Vandalism incidents and technical audit tool")
 
 DATA_DIR="data"
 DATA_FILE=os.path.join(DATA_DIR,"ulinzi_records.csv")
@@ -119,7 +119,18 @@ with open(DATA_FILE, mode="a", newline="") as file:
                     
                     
  ])
-            
+
+with st.form(key="incident_form"):
+    site = st.text_input("Site")
+    incident_type = st.selectbox("Incident Type", ["Vandalism", "Theft"])
+    security_report = st.text_area("Security report")
+    engineer_report = st.text_area("Engineer report")
+    
+    submit_button = st.form_submit_button("Submit")  
+
+if submit_button:
+    st.success("Incident recorded successfully!")
+
 st.success(f"Incident {incident_id} recorded successfully.")
 
 
@@ -133,6 +144,7 @@ st.success(f"Incident {incident_id} recorded successfully.")
     
 
    
+
 
 
 
