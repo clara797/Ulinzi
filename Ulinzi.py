@@ -42,8 +42,9 @@ with st.form("ulinzi_form"):
     territory = st.text_input("territory")
     incident_datetime = st.date_input("Incident Date")
     submitted = st.form_submit_button("Submit Incident")
+    
     if submit_button:
-     st.success("Incident recorded successfully!")
+      st.success("Incident recorded successfully!")
 
     vandalism_type = st.selectbox(
         "Type of Vandalism",
@@ -136,6 +137,7 @@ st.success(f"Incident {incident_id} recorded successfully.")
     
 
    
+
 
 
 
