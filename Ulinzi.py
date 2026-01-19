@@ -37,11 +37,13 @@ if not os.path.exists(DATA_FILE):
 
 with st.form("ulinzi_form"):
     st.markdown("Security Incident Details")
-
     site_id = st.text_input("Site ID")
     region = st.text_input("Region")
     territory = st.text_input("territory")
     incident_datetime = st.date_input("Incident Date")
+    submitted = st.form_submit_button("Submit Incident")
+    if submit button:
+     st.success("Incident recorded successfully!")
 
     vandalism_type = st.selectbox(
         "Type of Vandalism",
@@ -120,16 +122,6 @@ with open(DATA_FILE, mode="a", newline="") as file:
                     
  ])
 
-with st.form(key="incident_form"):
-    site = st.text_input("Site")
-    incident_type = st.selectbox("Incident Type", ["Vandalism", "Theft"])
-    security_report = st.text_area("Security report")
-    engineer_report = st.text_area("Engineer report")
-    
-    submit_button = st.form_submit_button("Submit")  
-
-if submit_button:
-    st.success("Incident recorded successfully!")
 
 st.success(f"Incident {incident_id} recorded successfully.")
 
@@ -144,6 +136,7 @@ st.success(f"Incident {incident_id} recorded successfully.")
     
 
    
+
 
 
 
