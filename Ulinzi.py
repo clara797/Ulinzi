@@ -78,7 +78,8 @@ with st.form("ulinzi_form"):
 
 equipment_description = st.text_area("Equipment Description")
 
-service_impact = st.selectbox(
+with st.form("incident_form"):
+ service_impact = st.selectbox(
         "Service Impact",
         ["No Outage", "Partial Outage", "Full Outage"]
     )
@@ -137,6 +138,7 @@ st.success(f"Incident {incident_id} recorded successfully.")
     
 
    
+
 
 
 
