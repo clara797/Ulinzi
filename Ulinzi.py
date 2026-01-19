@@ -86,7 +86,6 @@ with st.form("incident_form"):
 
 downtime_hours = st.number_input("Downtime (Hours)", min_value=0.0)
 temporary_fix = st.selectbox("Temporary Fix Applied?", ["Yes", "No"])
-
 submit = st.form_submit_button("Submit Incident")
 
 if submit:
@@ -138,6 +137,7 @@ st.success(f"Incident {incident_id} recorded successfully.")
     
 
    
+
 
 
 
