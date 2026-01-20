@@ -83,20 +83,19 @@ with st.form("incident_form"):
         "Service Impact",
         ["No Outage", "Partial Outage", "Full Outage"]
     )
+downtime_hours = st.number_input(
+     "Downtime (Hours)", 
+     min_value=0.0
+     )
+temporary_fix = st.selectbox(
+     "Temporary Fix Applied?", 
+     ["Yes", "No"]
+     )
 
-downtime_hours = st.number_input("Downtime (Hours)", min_value=0.0)
-temporary_fix = st.selectbox("Temporary Fix Applied?", ["Yes", "No"])
 submit = st.form_submit_button("Submit Incident")
-
 if submit:
-        if not all([
-            site_id, region, mitigation_applied,
-            engineer_name, equipment_description
-        ]):
-            st.error("All fields must be completed.")
-
-        else:
-            incident_id = f"ULINZI-{uuid.uuid4().hex[:8].upper()}"
+        incident_id = f"ULINZI-{uuid.uuid4().hex[:8].upper()}"
+        st.success(f"Incident {incident_id} recorded successfully.")
 
 
 
@@ -137,6 +136,7 @@ st.success(f"Incident {incident_id} recorded successfully.")
     
 
    
+
 
 
 
