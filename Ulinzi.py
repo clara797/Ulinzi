@@ -122,7 +122,9 @@ with open(DATA_FILE, mode="a", newline="") as file:
  ])
 
 
-st.success(f"Incident {incident_id} recorded successfully.")
+st.success(
+  f"Incident {st.session_state.incident_id} recorded successfully."
+)
 
 
 
@@ -135,6 +137,7 @@ st.success(f"Incident {incident_id} recorded successfully.")
     
 
    
+
 
 
 
