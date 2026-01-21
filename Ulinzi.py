@@ -96,10 +96,11 @@ with st.form("incident_form"):
      )
  submit = st.form_submit_button("Submit Incident")
     
-if "incident_id" in st.session_state:
+if st.session_state.get("incident_id"):
     st.success(
         f"Incident {st.session_state.incident_id} recorded successfully."
     )
+
 
 
 
@@ -142,6 +143,7 @@ st.success(
     
 
    
+
 
 
 
