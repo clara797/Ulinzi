@@ -96,6 +96,7 @@ with st.form("incident_form"):
 if "incident_id" in st.session_state:
     st.success(
         f"Incident {st.session_state.incident_id} recorded successfully."
+    )
 
 
 
@@ -138,6 +139,7 @@ st.success(
     
 
    
+
 
 
 
