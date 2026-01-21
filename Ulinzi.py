@@ -19,18 +19,17 @@ if not os.path.exists(DATA_DIR):
 Headers=[
      "incident_id",
      "site name",
-    "site_id",
-    "region",
-    "incident_datetime",
-    "vandalism_type",
-    "mitigation_applied",
-    "security_status",
-    "engineer_name",
-    "audit_date",
-    "equipment_description",
-    "service_impact",
-    "downtime_hours",
-    "temporary_fix"
+     "region",
+     "incident_datetime",
+     "vandalism_type",
+     "mitigation_applied",
+     "security_status",
+     "engineer_name",
+     "audit_date",
+     "equipment_description",
+     "service_impact",
+     "downtime_hours",
+     "permanent_fix"
 ]
 
 if not os.path.exists(DATA_FILE):
@@ -119,7 +118,7 @@ if submit:
         writer = csv.writer(file)
         writer.writerow([
             incident_id,
-            site_id,
+            site_name,
             region,
             territory,
             incident_datetime,
@@ -132,7 +131,7 @@ if submit:
             equipment_description,
             service_impact,
             downtime_hours,
-            temporary_fix
+            permanent_fix
         ])
 
     st.success(f"Incident {incident_id} recorded successfully.")
@@ -150,6 +149,7 @@ if not all([site_name, region, engineer_name, equipment_description]):
     
 
    
+
 
 
 
