@@ -43,7 +43,7 @@ with st.form("ulinzi_form"):
     st.subheader("🛡️ Security Incident Details")
     site_id = st.text_input("Site ID")
         region = st.selectbox(
-        "Region",
+        "Vandalizd region",
         [
            "Greater Western",
            "Rift",
@@ -148,6 +148,7 @@ if submit:
     
 
    
+
 
 
 
