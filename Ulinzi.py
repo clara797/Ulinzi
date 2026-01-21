@@ -47,10 +47,10 @@ with st.form("ulinzi_form"):
         [
            "Greater Western",
            "Rift",
-           "Nairobi_West"
-           "Nairobi_East"
-           "Mount Kenya"
-           "Coast"
+           "Nairobi_West",
+           "Nairobi_East",
+           "Mount Kenya",
+           "Coast",
            ]
     territory = st.text_input("Territory")
     incident_datetime = st.date_input("Incident Date")
@@ -148,6 +148,7 @@ if submit:
     
 
    
+
 
 
 
