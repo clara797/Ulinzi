@@ -164,13 +164,6 @@ if submit:
     st.success(f"Incident {incident_id} recorded successfully.")
 if not all([site_name, region, engineer_name, equipment_description]):
     st.error("All mandatory fields must be filled.")
-if submit:
-    if not all([...]):
-        st.error(...)
-else:
-        # write CSV here
-
-
 
 
 
