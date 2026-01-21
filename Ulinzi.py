@@ -58,12 +58,10 @@ with st.form("ulinzi_form"):
     incident_datetime = st.date_input("Incident Date")
 
     vandalism_type = st.selectbox(
-        "Type of Vandalism",
+        "Nature of Vandalism",
         [
-            "Starter battery Theft",
-            "RF power cable cut",
             "Fence cut",
-            "RF fiber cable cut",
+            "Fuel drained",
             "Other"
         ]
     )
@@ -150,6 +148,7 @@ if submit:
     
 
    
+
 
 
 
