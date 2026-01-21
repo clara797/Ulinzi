@@ -4,6 +4,33 @@ import os
 import uuid
 from datetime import datetime
 
+DATA_DIR = "data"
+DATA_FILE = os.path.join(DATA_DIR, "ulinzi_records.csv")
+
+if not os.path.exists(DATA_DIR):
+    os.makedirs(DATA_DIR)
+
+if not os.path.exists(DATA_FILE):
+    with open(DATA_FILE, mode="w", newline="") as file:
+        writer = csv.writer(file)
+        writer.writerow([
+            "incident_id",
+            "site_name",
+            "region",
+            "territory",
+            "incident_date",
+            "vandalism_type",
+            "mitigation_applied",
+            "security_status",
+            "engineer_name",
+            "audit_date",
+            "equipment_category",
+            "equipment_description",
+            "service_impact",
+            "downtime_hours",
+            "permanent_fix"
+        ])
+
 if "incident_id" not in st.session_state:
     st.session_state.incident_id = None
 
@@ -137,6 +164,10 @@ if submit:
     st.success(f"Incident {incident_id} recorded successfully.")
 if not all([site_name, region, engineer_name, equipment_description]):
     st.error("All mandatory fields must be filled.")
+if submit:
+    if not all([...]):
+        st.error(...)
+    else:
 
 
 
@@ -149,6 +180,7 @@ if not all([site_name, region, engineer_name, equipment_description]):
     
 
    
+
 
 
 
