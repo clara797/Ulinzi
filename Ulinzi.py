@@ -168,6 +168,7 @@ if submit:
     if not all([...]):
         st.error(...)
     else:
+        # write CSV here
 
 
 
@@ -180,6 +181,7 @@ if submit:
     
 
    
+
 
 
 
