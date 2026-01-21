@@ -104,7 +104,7 @@ with st.form("ulinzi_form"):
         min_value=0.0
     )
 
-    temporary_fix = st.selectbox(
+    permanent_fix = st.selectbox(
         "Temporary Fix Applied?",
         ["Yes", "No"]
     )
@@ -148,6 +148,7 @@ if submit:
     
 
    
+
 
 
 
