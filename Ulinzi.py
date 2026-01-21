@@ -4,6 +4,9 @@ import os
 import uuid
 from datetime import datetime
 
+if "incident_id" not in st.session_state:
+    st.session_state.incident_id = None
+
 st.set_page_config(page_title ="Ulinzibora" ,layout ="centered")
 st.title("Ulinzi")
 st.subheader("Vandalism incidents and technical audit tool")
@@ -139,6 +142,7 @@ st.success(
     
 
    
+
 
 
 
