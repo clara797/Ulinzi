@@ -41,7 +41,7 @@ if not os.path.exists(DATA_FILE):
 with st.form("ulinzi_form"):
 
     st.subheader("🛡️ Security Incident Details")
-    site_id = st.text_input("Site ID")
+    site_name = st.text_input("Site Name")
     region = st.selectbox(
         "Region",
         [
@@ -150,6 +150,7 @@ if submit:
     
 
    
+
 
 
 
