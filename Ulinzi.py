@@ -39,30 +39,34 @@ if not os.path.exists(DATA_FILE):
      writer.writerow(Headers)
 
 with st.form("ulinzi_form"):
-    st.markdown("Security Incident Details")
+
+    st.subheader("🛡️ Security Incident Details")
     site_id = st.text_input("Site ID")
     region = st.text_input("Region")
-    territory = st.text_input("territory")
+    territory = st.text_input("Territory")
     incident_datetime = st.date_input("Incident Date")
-    submitted = st.form_submit_button("Submit Incident")
-    
-    if submitted:
-      st.success("Incident recorded successfully!")
 
     vandalism_type = st.selectbox(
         "Type of Vandalism",
-        ["Starter battery Theft", "RF power cable cut", "Fence cut","RF fiber cable cut" "Other"]
+        [
+            "Starter battery Theft",
+            "RF power cable cut",
+            "Fence cut",
+            "RF fiber cable cut",
+            "Other"
+        ]
     )
 
     mitigation_applied = st.text_input("Immediate Mitigation Applied")
+
     security_status = st.selectbox(
         "Security Status",
         ["Open", "Contained", "Closed"]
     )
 
-    st.markdown("---")
-    st.markdown("Technical Audit")
+    st.divider()
 
+    st.subheader("🛠️ Technical Audit")
     engineer_name = st.text_input("Engineer Name")
     audit_date = st.date_input("Audit Date")
 
@@ -73,64 +77,56 @@ with st.form("ulinzi_form"):
             "RF fiber cable",
             "Electric strands",
             "Starter battery",
-            "grounding",
-            "Fiber cable"
+            "Grounding",
+            "Fiber cable",
             "Other"
         ]
     )
 
-equipment_description = st.text_area("Equipment Description")
+    equipment_description = st.text_area("Equipment Description")
 
-with st.form("incident_form"):
- service_impact = st.selectbox(
+    service_impact = st.selectbox(
         "Service Impact",
         ["No Outage", "Partial Outage", "Full Outage"]
     )
- downtime_hours = st.number_input(
-     "Downtime (Hours)", 
-     min_value=0.0
-     )
- temporary_fix = st.selectbox(
-     "Temporary Fix Applied?", 
-     ["Yes", "No"]
-     )
- submit = st.form_submit_button("Submit Incident")
-    
-if st.session_state.get("incident_id"):
-    st.success(
-        f"Incident {st.session_state.incident_id} recorded successfully."
+
+    downtime_hours = st.number_input(
+        "Downtime (Hours)",
+        min_value=0.0
     )
 
+    temporary_fix = st.selectbox(
+        "Temporary Fix Applied?",
+        ["Yes", "No"]
+    )
+
+    submit = st.form_submit_button("Submit Incident")
 
 
+if submit:
+    incident_id = f"ULINZI-{uuid.uuid4().hex[:8].upper()}"
 
-   
+    with open(DATA_FILE, mode="a", newline="") as file:
+        writer = csv.writer(file)
+        writer.writerow([
+            incident_id,
+            site_id,
+            region,
+            territory,
+            incident_datetime,
+            vandalism_type,
+            mitigation_applied,
+            security_status,
+            engineer_name,
+            audit_date,
+            equipment_category,
+            equipment_description,
+            service_impact,
+            downtime_hours,
+            temporary_fix
+        ])
 
-with open(DATA_FILE, mode="a", newline="") as file:
-                writer = csv.writer(file)
-                writer.writerow([ 
-                      "incident_id",
-                      "site name",
-                      "site_id",
-                      "region",
-                      "incident_datetime",
-                      "vandalism_type",
-                      "mitigation_applied",
-                      "security_status",
-                      "engineer_name",
-                      "audit_date",
-                      "equipment description",
-                      "sercice_impact",
-                      "downtime_hours",
-                      "temporary_fix",
-                    
-                    
- ])
-
-
-st.success(
-  f"Incident {st.session_state.incident_id} recorded successfully."
-)
+    st.success(f"Incident {incident_id} recorded successfully.")
 
 
 
@@ -143,6 +139,7 @@ st.success(
     
 
    
+
 
 
 
