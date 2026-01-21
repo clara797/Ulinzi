@@ -92,9 +92,10 @@ with st.form("incident_form"):
      ["Yes", "No"]
      )
  submit = st.form_submit_button("Submit Incident")
- if submit:
-    st.session_state.incident_id = f"ULINZI-{uuid.uuid4().hex[:8].upper()}"
-    st.success(f"Incident {st.session_state.incident_id} recorded successfully.")
+    
+if "incident_id" in st.session_state:
+    st.success(
+        f"Incident {st.session_state.incident_id} recorded successfully."
 
 
 
@@ -137,6 +138,7 @@ st.success(
     
 
    
+
 
 
 
