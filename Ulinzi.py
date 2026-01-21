@@ -43,7 +43,7 @@ with st.form("ulinzi_form"):
     st.subheader("🛡️ Security Incident Details")
     site_id = st.text_input("Site ID")
         region = st.selectbox(
-        "Vandalizd region",
+        "Region",
         [
            "Greater Western",
            "Rift",
@@ -52,6 +52,8 @@ with st.form("ulinzi_form"):
            "Mount Kenya",
            "Coast",
            ]
+        )
+
     territory = st.text_input("Territory")
     incident_datetime = st.date_input("Incident Date")
 
@@ -148,6 +150,7 @@ if submit:
     
 
    
+
 
 
 
