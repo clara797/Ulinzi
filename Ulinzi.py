@@ -167,7 +167,7 @@ if not all([site_name, region, engineer_name, equipment_description]):
 if submit:
     if not all([...]):
         st.error(...)
-    else:
+else:
         # write CSV here
 
 
@@ -181,6 +181,7 @@ if submit:
     
 
    
+
 
 
 
