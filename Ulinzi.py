@@ -45,14 +45,16 @@ if not os.path.exists(DATA_DIR):
 
 Headers=[
      "incident_id",
-     "site name",
+     "site_name",
      "region",
+     "territory"
      "incident_datetime",
      "vandalism_type",
      "mitigation_applied",
      "security_status",
      "engineer_name",
      "audit_date",
+     "equipment category"
      "equipment_description",
      "service_impact",
      "downtime_hours",
@@ -147,12 +149,14 @@ if submit:
               incident_id,
               site_name,
               region,
+              territory,
               incident_datetime,
               vandalism_type,
               mitigation_applied,
               security_status,
               engineer_name,
               audit_date,
+              equipment_category,
               equipment_description,
               service_impact,
               downtime_hours,
@@ -162,6 +166,7 @@ if submit:
     st.success(f"Incident {incident_id} recorded successfully.")
     if not all([site_name, region, engineer_name, equipment_description]):
      st.error("All mandatory fields must be filled.")
+
 
 
 
