@@ -141,29 +141,28 @@ with st.form("ulinzi_form"):
 if submit:
     incident_id = f"ULINZI-{uuid.uuid4().hex[:8].upper()}"
 
-    with open(DATA_FILE, mode="a", newline="") as file:
+    with open(DATA_FILE, mode="a", newline="", encoding="utf-8") as file:
         writer = csv.writer(file)
         writer.writerow([
-            incident_id,
-            site_name,
-            region,
-            territory,
-            incident_datetime,
-            vandalism_type,
-            mitigation_applied,
-            security_status,
-            engineer_name,
-            audit_date,
-            equipment_category,
-            equipment_description,
-            service_impact,
-            downtime_hours,
-            permanent_fix
+             "incident_id",
+             "site name",
+             "region",
+             "incident_datetime",
+             "vandalism_type",
+             "mitigation_applied",
+             "security_status",
+             "engineer_name",
+             "audit_date",
+             "equipment_description",
+             "service_impact",
+             "downtime_hours",
+             "permanent_fix"
         ])
 
     st.success(f"Incident {incident_id} recorded successfully.")
 if not all([site_name, region, engineer_name, equipment_description]):
     st.error("All mandatory fields must be filled.")
+
 
 
 
