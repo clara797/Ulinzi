@@ -146,7 +146,7 @@ if any(r in st.session_state.roles for r in ["Security", "Technical"]):
     submit = st.form_submit_button("Submit Incident")
 
 
-    if submit:
+if submit:
         if not all([
             site_name,
             region,
@@ -218,6 +218,7 @@ if not df.empty:
     )
 else:
     st.info("No data available to download yet.")
+
 
 
 
