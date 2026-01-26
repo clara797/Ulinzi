@@ -120,6 +120,7 @@ if any(r in st.session_state.roles for r in ["Security", "Technical"]):
           ["Safaricom", "Huawei","Nextgen","Tetranet", "Adrian" "Kinde" "other"]
         
         )
+        ticket_number = st.text_input("Ticket number")
         audit_date = st.date_input("Audit Date")
 
         equipment_category = st.selectbox(
@@ -217,6 +218,7 @@ if not df.empty:
     )
 else:
     st.info("No data available to download yet.")
+
 
 
 
