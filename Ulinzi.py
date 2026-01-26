@@ -116,7 +116,7 @@ if any(r in st.session_state.roles for r in ["Security", "Technical"]):
 
         engineer_name = st.text_input("Engineer Name")
         company_name = st.selectbox (
-          "Company Name"  
+          "Company Name",  
           ["Safaricom", "Huawei","Nextgen","Tetranet", "Adrian" "Kinde" "other"]
         
         )
@@ -143,7 +143,7 @@ if any(r in st.session_state.roles for r in ["Security", "Technical"]):
             "Permanent Fix Applied?", ["Yes", "No"]
         )
 
-        submit = st.form_submit_button("Submit Incident")
+    submit = st.form_submit_button("Submit Incident")
 
 
     if submit:
@@ -218,6 +218,7 @@ if not df.empty:
     )
 else:
     st.info("No data available to download yet.")
+
 
 
 
