@@ -115,6 +115,11 @@ if any(r in st.session_state.roles for r in ["Security", "Technical"]):
         st.subheader("🛠️ Technical Audit")
 
         engineer_name = st.text_input("Engineer Name")
+        company_name = st.selectbox (
+          "Company Name"  
+          ["Safaricom", "Huawei","Nextgen","Tetranet", "Adrian" "Kinde" "other"]
+        
+        )
         audit_date = st.date_input("Audit Date")
 
         equipment_category = st.selectbox(
@@ -212,6 +217,7 @@ if not df.empty:
     )
 else:
     st.info("No data available to download yet.")
+
 
 
 
