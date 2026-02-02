@@ -48,9 +48,11 @@ if not st.session_state.logged_in:
     st.stop()
 
 
+
+
 st.set_page_config(page_title="Ulinzibora", layout="centered")
 
-st.title("🛡️ Ulinzibora")
+st.title("Ulinzibora")
 st.caption("Vandalism incidents and technical audit tool")
 
 st.sidebar.success(f"User: {st.session_state.username}")
@@ -75,6 +77,8 @@ Headers=[
      "mitigation_applied",
      "security_status",
      "engineer_name",
+     "company_name",
+     "Ticket number"
      "audit_date",
      "equipment category",
      "equipment_description",
@@ -91,12 +95,12 @@ if not os.path.exists(DATA_FILE):
 if any(r in st.session_state.roles for r in ["Security", "Technical"]):
 
     with st.form("incident_form"):
-        st.subheader("🛡️ Security Incident + Technical Audit")
+        st.subheader("Security Audit")
 
         site_name = st.text_input("Site Name")
         region = st.selectbox(
             "Region",
-            ["Greater Western", "Rift", "Nairobi_West","Nairobi_East" "Coast"]
+            ["Greater Western", "Rift", "Nairobi_West","Nairobi_East", "Coast"]
         )
         territory = st.text_input("Territory")
         incident_datetime = st.date_input("Incident Date")
@@ -112,17 +116,16 @@ if any(r in st.session_state.roles for r in ["Security", "Technical"]):
         )
 
         st.divider()
-        st.subheader("🛠️ Technical Audit")
+        st.subheader("Technical Audit")
 
         engineer_name = st.text_input("Engineer Name")
         company_name = st.selectbox (
-          "Company Name",  
-          ["Safaricom", "Huawei","Nextgen","Tetranet", "Adrian" "Kinde" "other"]
-        
+          "Company Name",
+          ["Safaricom", "Huawei","Nextgen","Tetranet", "Adrian" ,"Kinde" ,"other"]
+       
         )
         ticket_number = st.text_input("Ticket number")
         audit_date = st.date_input("Audit Date")
-
         equipment_category = st.selectbox(
             "Equipment Category",
             ["RF power cable", "RF fiber cable","Transmission Fiber cable", "Starter Battery", "Other"]
@@ -143,10 +146,9 @@ if any(r in st.session_state.roles for r in ["Security", "Technical"]):
             "Permanent Fix Applied?", ["Yes", "No"]
         )
 
-submit = st.form_submit_button("Submit Incident")
-
-
-if submit:
+        submit = st.form_submit_button("Submit Incident")
+    
+    if submit:
         if not all([
             site_name,
             region,
@@ -170,6 +172,8 @@ if submit:
                     mitigation_applied,
                     security_status,
                     engineer_name,
+                    company_name,
+                    ticket_number,
                     audit_date,
                     equipment_category,
                     equipment_description,
@@ -182,27 +186,53 @@ if submit:
                 f"Incident {incident_id} recorded successfully."
             )
 
-
 if os.path.exists(DATA_FILE):
     df = pd.read_csv(DATA_FILE)
+    df["incident_datetime"] = pd.to_datetime(df["incident_datetime"])
+    df["month"] = df["incident_datetime"].dt.to_period("M").astype(str)
+
+    
+
 else:
     df = pd.DataFrame()
 
 
 if "Management" in st.session_state.roles:
     st.divider()
-    st.header("📊 Management Dashboard")
+    st.header("Management Dashboard")
 
+    incidents_per_month = (
+    df.groupby("month")
+      .size()
+      .reset_index(name="Incidents")
+      )
+
+    region_downtime = (
+    df.groupby("region")["downtime_hours"]
+      .sum()
+      .reset_index()
+)
+
+
+    
     df = pd.read_csv(DATA_FILE)
 
-    st.subheader("Top Vandalized Sites")
-    st.bar_chart(df["site_name"].value_counts())
+    st.subheader("Total Incidents per Month")
+    st.bar_chart(incidents_per_month.set_index("month"))
 
     st.subheader("Incidents by Region")
     st.bar_chart(df["region"].value_counts())
 
+
+    st.subheader("Top Vandalized Sites")
+    st.bar_chart(df["site_name"].value_counts())
+
+    
     total_downtime = df["downtime_hours"].sum()
     st.metric("Total Downtime (Hours)", total_downtime)
+
+    st.subheader("Downtime Hours by Region")
+    st.bar_chart(region_downtime.set_index("region"))
 
 
 
@@ -218,6 +248,7 @@ if not df.empty:
     )
 else:
     st.info("No data available to download yet.")
+
 
 
 
