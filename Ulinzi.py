@@ -19,7 +19,7 @@ if "roles" not in st.session_state:
 USERS = {
     "cnasimiyu": {"password": "safaricom123", "roles": ["Technical", "Management","Security"]},
     "rmoenga":{"password":"safaricom123", "roles":["Technical", "Management","Security"] },
-
+    "rnio":{"password":"safaricom123", "roles":["Technical", "Management","Security"] },
 }
 
 submit = False
@@ -248,6 +248,7 @@ if not df.empty:
     )
 else:
     st.info("No data available to download yet.")
+
 
 
 
